@@ -37,7 +37,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "schemas.yaml#/$defs/textSearchResults"
+                $ref: "schemas.json#/$defs/textSearchResults"
                 required: true
                 nullable: false
           headers:
@@ -59,7 +59,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "schemas.yaml#/$defs/libraryContents"
+                $ref: "schemas.json#/$defs/libraryContents"
           headers:
             Access-Control-Allow-Origin:
               $ref: "#/components/headers/corsOrigin"
@@ -81,7 +81,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "schemas.yaml#/$defs/libraryItemFull"
+                $ref: "schemas.json#/$defs/libraryItemFull"
           headers:
             Access-Control-Allow-Origin:
               $ref: "#/components/headers/corsOrigin"
@@ -113,7 +113,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "schemas.yaml#/$defs/organisationFull"
+                $ref: "schemas.json#/$defs/organisationFull"
           headers:
             Access-Control-Allow-Origin:
               $ref: "#/components/headers/corsOrigin"
@@ -146,7 +146,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "schemas.yaml#/$defs/productFull"
+                $ref: "schemas.json#/$defs/productFull"
           headers:
             Access-Control-Allow-Origin:
               $ref: "#/components/headers/corsOrigin"
@@ -181,7 +181,38 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "schemas.yaml#/$defs/categoryAlternatives"
+                  $ref: "schemas.json#/$defs/categoryAlternatives"
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/corsOrigin"
+            Access-Control-Allow-Methods:
+              $ref: "#/components/headers/corsMethods"
+            Access-Control-Allow-Headers:
+              $ref: "#/components/headers/corsHeaders"
+        "404":
+          description: "Not found"
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/corsOrigin"
+            Access-Control-Allow-Methods:
+              $ref: "#/components/headers/corsMethods"
+            Access-Control-Allow-Headers:
+              $ref: "#/components/headers/corsHeaders"
+
+  /category/{category}:
+    parameters:
+      - $ref: "#/components/parameters/category"
+    get:
+      operationId: getCategory
+      summary: Get category.
+      description: Returns full info about a specified category.
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "schemas.json#/$defs/categoryFull"
           headers:
             Access-Control-Allow-Origin:
               $ref: "#/components/headers/corsOrigin"
@@ -207,7 +238,7 @@ components:
       in: path
       required: true
       schema:
-        $ref: "schemas.yaml#/$defs/organisationIdVariant"
+        $ref: "schemas.json#/$defs/organisationIdVariant"
 
     productIdVariant:
       name: productIdVariant
@@ -215,7 +246,7 @@ components:
       in: path
       required: true
       schema:
-        $ref: "schemas.yaml#/$defs/productIdVariant"
+        $ref: "schemas.json#/$defs/productIdVariant"
 
     id:
       name: id
@@ -223,7 +254,15 @@ components:
       in: path
       required: true
       schema:
-        $ref: "schemas.yaml#/$defs/id"
+        $ref: "schemas.json#/$defs/id"
+
+    category:
+      name: category
+      description: Category path.
+      in: path
+      required: true
+      schema:
+        $ref: "schemas.json#/$defs/category"
 
     regionCode:
       name: region
@@ -231,7 +270,7 @@ components:
       in: query
       required: false
       schema:
-        $ref: "schemas.yaml#/$defs/regionCode"
+        $ref: "schemas.json#/$defs/regionCode"
 
     libraryTopic:
       name: topic
@@ -239,7 +278,7 @@ components:
       in: path
       required: true
       schema:
-        $ref: "schemas.yaml#/$defs/libraryTopic"
+        $ref: "schemas.json#/$defs/libraryTopic"
 
     query:
       name: query
@@ -247,7 +286,7 @@ components:
       in: query
       required: true
       schema:
-        $ref: "schemas.yaml#/$defs/shortString"
+        $ref: "schemas.json#/$defs/shortString"
 
   headers:
     corsOrigin:
