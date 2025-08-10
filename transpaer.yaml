@@ -1,10 +1,10 @@
 openapi: 3.0.0
 
 info:
-  title: Sustainity
+  title: Transpaer
   description: |
-    API for the sustaininty backend
-  version: 0.4.0
+    API for the transpaer backend
+  version: 0.1.0
 
 paths:
 

@@ -110,7 +110,7 @@ $defs:
   dataSource:
     description: Describes where the related data was retrieved from.
     type: string
-    enum: ["sustainity", "wiki", "off", "eu", "b_corp", "fti", "tco", "other"]
+    enum: ["transpaer", "wiki", "off", "eu", "b_corp", "fti", "tco", "other"]
 
   regionCode:
     description: Code of a region.
@@ -269,8 +269,8 @@ $defs:
     required:
       - items
 
-  sustainityScoreCategory:
-    description: Categories in the sustainity score
+  transpaerScoreCategory:
+    description: Categories in the transpaer score
     type: string
     enum:
       - dataAvailability
@@ -284,12 +284,12 @@ $defs:
       - atLeastOneCert
       - atLeastTwoCerts
 
-  sustainityScoreBranch:
-    description: Part of explanation of calculation of the Sustainity score.
+  transpaerScoreBranch:
+    description: Part of explanation of calculation of the Transpaer score.
     type: object
     properties:
       category:
-        $ref: "#/$defs/sustainityScoreCategory"
+        $ref: "#/$defs/transpaerScoreCategory"
       weight:
         type: integer
       score:
@@ -298,15 +298,15 @@ $defs:
       branches:
         type: array
         items:
-          $ref: "#/$defs/sustainityScoreBranch"
+          $ref: "#/$defs/transpaerScoreBranch"
     required:
       - category
       - weight
       - score
       - branches
 
-  sustainityScore:
-    description: Explanation of calculation of the Sustainity score.
+  transpaerScore:
+    description: Explanation of calculation of the Transpaer score.
     type: object
     properties:
       total:
@@ -315,7 +315,7 @@ $defs:
       tree:
         type: array
         items:
-          $ref: "#/$defs/sustainityScoreBranch"
+          $ref: "#/$defs/transpaerScoreBranch"
     required:
       - total
       - tree
@@ -349,12 +349,12 @@ $defs:
     required:
       - score
 
-  sustainityMedallion:
-    description: Details of Sustainity evaluation.
+  transpaerMedallion:
+    description: Details of Transpaer evaluation.
     type: object
     properties:
       score:
-        $ref: "#/$defs/sustainityScore"
+        $ref: "#/$defs/transpaerScore"
     required:
       - score
 
@@ -374,7 +374,7 @@ $defs:
       - bCorp
       - euEcolabel
       - fti
-      - sustainity
+      - transpaer
       - tco
 
   badgeName:
@@ -412,8 +412,8 @@ $defs:
         $ref: "#/$defs/euEcolabelMedallion"
       fti:
         $ref: "#/$defs/ftiMedallion"
-      sustainity:
-        $ref: "#/$defs/sustainityMedallion"
+      transpaer:
+        $ref: "#/$defs/transpaerMedallion"
       tco:
         $ref: "#/$defs/tcoMedallion"
     required:
