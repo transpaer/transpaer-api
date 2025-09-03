@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['*']
+  pull_request:
+
+jobs:
+
+  ci:
+    name: Validate converting to JSONs
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install tools
+        uses: taiki-e/install-action@v2
+        with:
+          tool: yj
+
+      - name: Check converting
+        run: ./convert.sh
+
