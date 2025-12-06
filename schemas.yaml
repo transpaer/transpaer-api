@@ -110,7 +110,6 @@ $defs:
   dataSource:
     description: Describes where the related data was retrieved from.
     type: string
-    enum: ["transpaer", "wiki", "off", "eu", "b_corp", "fti", "tco", "other"]
 
   regionCode:
     description: Code of a region.
