@@ -111,6 +111,12 @@ $defs:
     description: Describes where the related data was retrieved from.
     type: string
 
+  dataSources:
+    description: Describes where the related data was retrieved from.
+    type: array
+    items:
+      type: string
+
   regionCode:
     description: Code of a region.
     type: string
@@ -133,11 +139,11 @@ $defs:
     properties:
       text:
         $ref: "#/$defs/shortString"
-      source:
-        $ref: "#/$defs/dataSource"
+      sources:
+        $ref: "#/$defs/dataSources"
     required:
       - text
-      - source
+      - sources
 
   longText:
     description: Long text with its source.
@@ -145,11 +151,11 @@ $defs:
     properties:
       text:
         $ref: "#/$defs/longString"
-      source:
-        $ref: "#/$defs/dataSource"
+      sources:
+        $ref: "#/$defs/dataSources"
     required:
       - text
-      - source
+      - sources
 
   image:
     description: Image path/URL with its source.
